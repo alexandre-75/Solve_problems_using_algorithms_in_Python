@@ -7,6 +7,21 @@ class BruteForceModel():
         pass
 
     def creating_a_list_of_stock_market_instances(self, file_path):
+
+        """
+        Reads a CSV file containing stock market data and returns a list of `Stock` instances.
+
+        Args:
+            file_path: A string containing the path to the CSV file.
+
+        Returns:
+            A list of `Stock` instances, where each instance corresponds to a row in the CSV file.
+
+        Raises:
+            FileNotFoundError: If the specified file does not exist.
+            ValueError: If the specified file is empty or contains invalid data.
+        """
+
         list_of_stock_market_instances = []
 
         with open(file_path, newline="") as file:
@@ -24,5 +39,5 @@ class BruteForceModel():
                 profitability_of_an_share = int(row[2])
                 stock = Stock(name_of_an_action, share_price, profitability_of_an_share)
                 list_of_stock_market_instances.append(stock)
-                
+
         return list_of_stock_market_instances
