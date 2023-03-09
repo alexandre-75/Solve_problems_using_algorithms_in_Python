@@ -70,7 +70,7 @@ class BruteForceController():
                     profits_2 = real_profit_of_an_action_after_two_years_2 *  number_of_stock_market_shares_2
                     for j in instances_list:
                         if j.share_price <= new_capital_residual:
-                            print("         ------------ cas 5")
+                            print("         ------------ cas 6")
                             new_capital_invested_2 = 0
                             while new_capital_invested_2 <= new_capital_residual :
                                 new_capital_invested_2 += j.share_price
@@ -92,7 +92,7 @@ class BruteForceController():
                     second_capital =list(dictionnaire_trie_2.values())[0][2]
 
                 elif i.share_price <= capital_residual:
-                    print("  je suis dans le cas 2 ")
+                    print("  I am in case  2 ")
                     new_capital_invested = 0
                     while new_capital_invested <= capital_residual :
                         new_capital_invested += i.share_price
