@@ -24,6 +24,7 @@ class BruteForceController():
         for instance in instances_list:
 
             name_of_an_stock_market = instance.name_of_an_action
+            print(f"\non est dans l'action {name_of_an_stock_market}\n")
             price_of_a_stock_market = instance.share_price
             percentage_profit_after_two_years = instance.profitability_of_an_share
 
@@ -51,11 +52,12 @@ class BruteForceController():
             selected_instances = {}
 
             for i in instances_list:
-               
+
                 percentage_profit_after_two_years_2 = i.profitability_of_an_share
                 real_profit_of_an_action_after_two_years_2 = float((i.share_price / 100) * percentage_profit_after_two_years_2)
 
                 if is_first_value and i.share_price <= capital_residual:
+                    print(f"on est dans le if is_first_value and i.share_price <= capital_residual")
                     new_capital_invested = 0
                     number_of_stock_market_shares_2 = 0
                     while new_capital_invested <= capital_residual :
@@ -66,6 +68,21 @@ class BruteForceController():
                     number_of_stock_market_shares_2 = number_of_stock_market_shares_2 - 1
                     new_capital_residual = capital_residual - capital_really_invested_2
                     profits_2 = real_profit_of_an_action_after_two_years_2 *  number_of_stock_market_shares_2
+                    for j in instances_list:
+                        if j.share_price <= new_capital_residual:
+                            print("         ------------ cas 5")
+                            new_capital_invested_2 = 0
+                            while new_capital_invested_2 <= new_capital_residual :
+                                new_capital_invested_2 += j.share_price
+                            capital_really_invested_3 =  new_capital_invested_2 - j.share_price
+                            new_capital_residual_2 = new_capital_residual - capital_really_invested_3
+                            for k in instances_list:
+                                if k.share_price <= new_capital_residual_2:
+                                    input()
+                                else:
+                                    pass
+                        else:
+                            pass
 
                     selected_instances[i.name_of_an_action] = [profits_2, number_of_stock_market_shares_2, capital_really_invested_2, new_capital_residual]
                     dictionnaire_trie_2 = dict(sorted(selected_instances.items(), key=lambda item: item[1], reverse=True))
@@ -73,6 +90,49 @@ class BruteForceController():
                     second_profit =list(dictionnaire_trie_2.values())[0][0]
                     second_number =list(dictionnaire_trie_2.values())[0][1]
                     second_capital =list(dictionnaire_trie_2.values())[0][2]
+
+                elif i.share_price <= capital_residual:
+                    print("  je suis dans le cas 2 ")
+                    new_capital_invested = 0
+                    while new_capital_invested <= capital_residual :
+                        new_capital_invested += i.share_price
+                    capital_really_invested_2 =  new_capital_invested - i.share_price
+                    new_capital_residual = capital_residual - capital_really_invested_2
+                    for j in instances_list:
+                        if j.share_price <= new_capital_residual:
+                            print("         ------------ cas 3")
+                            new_capital_invested_2 = 0
+                            while new_capital_invested_2 <= new_capital_residual :
+                                new_capital_invested_2 += j.share_price
+                            capital_really_invested_3 =  new_capital_invested_2 - j.share_price
+                            new_capital_residual_2 = new_capital_residual - capital_really_invested_3
+                            for k in instances_list:
+                                if k.share_price <= new_capital_residual_2:
+                                    print("             ------------------------ cas 4")
+                                    new_capital_invested_3 = 0
+                                    while new_capital_invested_3 <= new_capital_residual_2 :
+                                        new_capital_invested_3 += k.share_price  
+                                    capital_really_invested_4 =  new_capital_invested_3 - k.share_price
+                                    new_capital_residual_3 = new_capital_residual_2 - capital_really_invested_4
+                                    for h in instances_list:
+                                        if h.share_price <= new_capital_residual_3:
+                                            print("                         --------------------------- cas 5")
+                                            new_capital_invested_4 = 0
+                                            while new_capital_invested_4 <= new_capital_residual_3 :
+                                                new_capital_invested_4 += h.share_price                                           
+                                            capital_really_invested_5 =  new_capital_invested_4 - h.share_price
+                                            new_capital_residual_4 = new_capital_residual_3 - capital_really_invested_5
+                                            for m in instances_list:
+                                                if m.share_price <= new_capital_residual_4:
+                                                    input()
+                                                else:
+                                                    pass
+                                        else:
+                                            pass
+                                else:
+                                    pass
+                        else:
+                            pass
                 else:
                     pass
 
@@ -86,4 +146,3 @@ class BruteForceController():
         user_input = input("\ntype [a] to exit : ")
         if user_input == "a":
             return exit()
-            
