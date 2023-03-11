@@ -1,24 +1,21 @@
-from models.bruteforcemodel import BruteForceModel
+from models.datamodel import DataModel
 
-from views.bruteforceview import BruteForceView
+from views.bruteforceconstraintview import BruteForceConstraintView
 
-from utils.time import Time
 from utils.constant import Constant
 
 
 class BruteForceController():
 
     def __init__(self):
-        self.brute_force_model = BruteForceModel()
-        self.brute_force_view = BruteForceView()
-        self.time_util = Time()
+        self.data_model = DataModel()
+        self.brute_force_constraint_view = BruteForceConstraintView()
         self.constant_capital_invest_util = Constant()
 
-    def brute_force(self, file_path):
+    def brute_force_constraint(self, file_path):
 
         dictionary = {}
-        instances_list = self.brute_force_model.creating_a_list_of_stock_market_instances(file_path)
-        time_start = self.time_util.time()
+        instances_list = self.data_model.creating_a_list_of_stock_market_instances(file_path)
         capital_to_invest = self.constant_capital_invest_util.constant_capital_invest()
         
         for instance in instances_list:
@@ -136,13 +133,7 @@ class BruteForceController():
                 else:
                     pass
 
-        self.brute_force_view.display_best_investment(dictionnaire_trie)
-        self.brute_force_view.display_best_investment(dictionnaire_trie_2)
-        self.brute_force_view.display_resume_best_investment(first_key, second_key, first_number, second_number, first_profit, second_profit)
+        self.brute_force_constraint_view.display_best_investment(dictionnaire_trie)
+        self.brute_force_constraint_view.display_best_investment(dictionnaire_trie_2)
+        self.brute_force_constraint_view.display_resume_best_investment(first_key, second_key, first_number, second_number, first_profit, second_profit)
 
-        end_time = self.time_util.time()
-        program_execution_time = end_time - time_start
-        self.brute_force_view.display_program_execution_time(program_execution_time)
-        user_input = input("\ntype [a] to exit : ")
-        if user_input == "a":
-            return exit()

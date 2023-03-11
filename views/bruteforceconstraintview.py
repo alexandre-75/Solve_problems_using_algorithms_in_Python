@@ -1,11 +1,8 @@
-from prettytable import PrettyTable
 
-
-class BruteForceView():
+class BruteForceConstraintView():
 
     def __init__(self):
-        self.table = PrettyTable()
-        self.display_report_header_brute_force = ["actions", "number_of_stock_market_shares", "global_profits_after_two_years"]
+        pass
    
     def display_best_investment(self, dictionnaire_trie):
 

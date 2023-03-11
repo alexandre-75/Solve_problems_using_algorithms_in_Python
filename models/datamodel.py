@@ -1,7 +1,7 @@
 from controllers.stockcontroller import Stock
 import csv
 
-class BruteForceModel():
+class DataModel():
 
     def __init__(self):
         pass
