@@ -5,7 +5,7 @@ from views.bruteforceconstraintview import BruteForceConstraintView
 from utils.constant import Constant
 
 
-class BruteForceController():
+class BruteForceConstraintController():
 
     def __init__(self):
         self.data_model = DataModel()
