@@ -1,9 +1,11 @@
 from views.menuview import MenuView
 from views.bruteforceconstraintview import BruteForceConstraintView
-from controllers.bruteforceconstraintcontroller import BruteForceController
 
+from controllers.bruteforceconstraintcontroller import BruteForceConstraintController
+from controllers.bruteforcecontroller import BruteForceController
 
 from time import perf_counter
+
 
 class MenuController():
 
@@ -11,7 +13,9 @@ class MenuController():
 
         self.menu_view = MenuView()
         self.brute_force_constraint_view = BruteForceConstraintView()
-        self.brute_force_constraint_controller = BruteForceController()
+
+        self.brute_force_constraint_controller = BruteForceConstraintController()
+        self.brute_force_controller = BruteForceController()
 
     def main_menu(self):
         self.menu_view.display_main_menu()
@@ -46,7 +50,7 @@ class MenuController():
         if user_input =="3":
             return self.management_brute_force_constraint(file_path)
         if user_input =="4":
-            pass
+            return self.management_brute_force(file_path)
         else:
             self.menu_view.error_choice_option()
             return self.program_choice_third_menu()
@@ -58,6 +62,18 @@ class MenuController():
         bruteforce_time = end_timer - start_timer
         self.brute_force_constraint_view.display_program_execution_time(bruteforce_time)
         user_input = int(input("\npress [1] to return to the third menu, otherwise main menu : "))
+        if user_input == 1:
+            return self.program_choice_third_menu(file_path)
+        else:
+            return self.main_menu()
+
+    def management_brute_force(self, file_path):
+        start_timer = perf_counter()
+        self.brute_force_controller.brute_force(file_path)
+        end_timer = perf_counter()
+        bruteforce_time = end_timer - start_timer
+        self.brute_force_constraint_view.display_program_execution_time(bruteforce_time)
+        user_input = int(input("\npress [1] to exit the program: "))
         if user_input == 1:
             return self.program_choice_third_menu(file_path)
         else:
