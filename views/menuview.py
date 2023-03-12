@@ -35,7 +35,7 @@ class MenuView():
         print("\nWelcome to the thrid menu!")
         print("What would you like to do? Select the desired option by entering its number:")
         print("""
-        1. Quit the trid menu, and return secondary menu
+        1. Quit the trid menu, and return secondary menu\n
         2. Quit the trid menu, and return main menu\n
         3. Run brute force :
             constraint : the same share is purchased as long as the capital is available. Then we start again with the remaining capital.\n

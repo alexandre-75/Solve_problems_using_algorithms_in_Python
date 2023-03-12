@@ -32,3 +32,9 @@ class BruteForceView():
         total_list_sum_best_of_the_best = sum(list_sum_best_of_the_best)
         print(f"\ncapital invested : {total_sum_price}€")
         print(f"\nprofitability : {total_list_sum_best_of_the_best}€")
+    
+    def display_execution_time(self, time):
+
+        """Displays the execution time."""
+        
+        print (f"\nthe program execution time is: {time}")

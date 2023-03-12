@@ -68,11 +68,8 @@ class MenuController():
             return self.main_menu()
 
     def management_brute_force(self, file_path):
-        start_timer = perf_counter()
         self.brute_force_controller.brute_force(file_path)
-        end_timer = perf_counter()
-        bruteforce_time = end_timer - start_timer
-        self.brute_force_constraint_view.display_program_execution_time(bruteforce_time)
+
         user_input = int(input("\npress [1] to exit the program: "))
         if user_input == 1:
             return self.program_choice_third_menu(file_path)
