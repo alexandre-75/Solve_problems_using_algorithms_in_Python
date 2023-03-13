@@ -3,6 +3,7 @@ from views.bruteforceconstraintview import BruteForceConstraintView
 
 from controllers.bruteforceconstraintcontroller import BruteForceConstraintController
 from controllers.bruteforcecontroller import BruteForceController
+from controllers.optimizedcontroller import OptimizedController
 
 from time import perf_counter
 
@@ -16,6 +17,7 @@ class MenuController():
 
         self.brute_force_constraint_controller = BruteForceConstraintController()
         self.brute_force_controller = BruteForceController()
+        self.optimized_controller = OptimizedController()
 
     def main_menu(self):
         self.menu_view.display_main_menu()
@@ -36,6 +38,8 @@ class MenuController():
             return self.main_menu()
         elif user_input =="2":
             return self.program_choice_third_menu(file_path)
+        elif user_input =="3":
+            return self.management_optimized(file_path)
         else:
             self.menu_view.error_choice_option()
             return self.secondary_menu_choice_of_program()
@@ -69,9 +73,12 @@ class MenuController():
 
     def management_brute_force(self, file_path):
         self.brute_force_controller.brute_force(file_path)
-
         user_input = int(input("\npress [1] to exit the program: "))
         if user_input == 1:
             return self.program_choice_third_menu(file_path)
         else:
             return self.main_menu()
+    
+    def management_optimized(self,file_path):
+        self.optimized_controller.optimized(file_path)
+        pass

@@ -25,6 +25,7 @@ class MenuView():
         print("""
         1. Quit the secondary menu, and return main menu
         2. Menu : Run brute force program
+        3. Run optimized program
         """)
 
     def display_program_choice_third_menu(self):
