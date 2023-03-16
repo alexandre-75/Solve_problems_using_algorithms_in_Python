@@ -81,4 +81,8 @@ class MenuController():
     
     def management_optimized(self,file_path):
         self.optimized_controller.optimized(file_path)
-        pass
+        user_input = int(input("\npress [1] to exit the program: "))
+        if user_input == 1:
+            return self.secondary_menu_choice_of_program()
+        else:
+            return self.main_menu()

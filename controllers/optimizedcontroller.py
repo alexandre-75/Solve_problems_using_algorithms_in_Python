@@ -1,14 +1,36 @@
+from time import perf_counter
+
 from utils.constant import Constant
 from models.datamodel import DataModel
 from controllers.stockcontroller import Stock
+from views.optimizedview import OptimizedView
 
 class OptimizedController():
 
     def __init__(self):
         self.constant = Constant()
         self.data_model = DataModel()
+        self.optimized_view = OptimizedView()
 
     def optimized(self, file_path):
+
+        """Optimizes an investment portfolio using the knapsack optimization algorithm.
+
+         The knapsack optimization algorithm is a classic algorithm in computer science 
+         that solves a combinatorial optimization problem,
+         which consists of filling a bag with objects of different sizes and values 
+         while maximizing the total value of the objects in the bag and respecting the maximum capacity of the bag.
+         In this case, stock market shares are the objects and the capital available to invest is the maximum capacity of the bag.
+
+         args:
+             file_path (str): The path to the file containing the stock market stock information.
+
+         Returns:
+             None
+
+         """
+
+        start_time = perf_counter()
 
         capital_to_invest = self.constant.constant_capital_invest()
         action_instances_list = self.data_model.creating_a_list_of_stock_market_instances(file_path)
@@ -39,4 +61,9 @@ class OptimizedController():
                 stock_selection.append(stock)
                 capital_to_invest -= stock.share_price
             total_action -= 1
-        return matrix[-1][-1], stock_selection
+        
+        end_time = perf_counter()
+        total_time = end_time - start_time
+
+        self.optimized_view.display_resume_investment(matrix[-1][-1], stock_selection, total_time)
+
