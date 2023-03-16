@@ -11,8 +11,10 @@ class MenuView():
         print("\nWelcome to the main menu!")
         print("What would you like to do? Select the desired option by entering its number:")
         print("""
-        1. Analyze file 1: data (20 actions)
-        2. Quit the program
+        1. Analyze file 1: data.csv (20 actions)
+        2. Analyse file 2: dataset1_Python+P7.csv (1001 actions)
+        3. Analyse file 3: dataset2_Python+P7.csv (1000 actions)
+        4. Quit the program
         """)
 
     def display_secondary_menu(self):

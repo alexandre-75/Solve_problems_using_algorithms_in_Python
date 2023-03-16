@@ -21,7 +21,7 @@ class DataModel():
             FileNotFoundError: If the specified file does not exist.
             ValueError: If the specified file is empty or contains invalid data.
         """
-
+        # if file_path == "data\data.csv":
         list_of_stock_market_instances = []
 
         with open(file_path, newline="") as file:
@@ -32,12 +32,24 @@ class DataModel():
                 file.seek(0)
                 next(reader)
 
-            # Create Stock objects and append to list
-            for row in reader:
-                name_of_an_action = row[0]
-                share_price = int(row[1])
-                profitability_of_an_share = int(row[2])
-                stock = Stock(name_of_an_action, share_price, profitability_of_an_share)
-                list_of_stock_market_instances.append(stock)
-
-        return list_of_stock_market_instances
+                if  file_path == "data\data.csv":
+                    # Create Stock objects and append to list
+                    for row in reader:
+                        name_of_an_action = row[0]
+                        share_price = int(row[1])
+                        profitability_of_an_share = int(row[2])
+                        stock = Stock(name_of_an_action, share_price, profitability_of_an_share)
+                        list_of_stock_market_instances.append(stock)
+                    return list_of_stock_market_instances
+                else:
+                    # Create Stock objects and append to list
+                    for row in reader:
+                        if float(row[1])<=0 or float(row[2]) <= 0:
+                            pass
+                        else:
+                            name_of_an_action = row[0]
+                            share_price = int(float(row[1])*100)
+                            profitability_of_an_share = int(float(row[2])*100)
+                            stock = Stock(name_of_an_action, share_price, profitability_of_an_share)
+                            list_of_stock_market_instances.append(stock)
+                    return list_of_stock_market_instances

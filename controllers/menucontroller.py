@@ -21,10 +21,16 @@ class MenuController():
 
     def main_menu(self):
         self.menu_view.display_main_menu()
+        file_path_2 = "data\dataset1_Python+P7.csv"
+        file_path_3 = "data\dataset2_Python+P7.csv"
         user_input = input("enter a value, please : ")
         if user_input == "1":
-            return self.secondary_menu_choice_of_program()     
-        elif user_input == "2":
+            return self.secondary_menu_choice_of_program() 
+        elif  user_input == "2":
+            return self.management_file(file_path_2)
+        elif  user_input == "3":
+            return self.management_file(file_path_3)
+        elif user_input == "4":
             return exit()
         else:
             self.menu_view.error_choice_option()
@@ -32,6 +38,7 @@ class MenuController():
     
     def secondary_menu_choice_of_program (self):
         file_path = "data\data.csv"
+        file_path_2 = "data\dataset1_Python+P7.csv"
         self.menu_view.display_secondary_menu()
         user_input = input("enter a value, please : ")
         if user_input == "1":
@@ -79,10 +86,19 @@ class MenuController():
         else:
             return self.main_menu()
     
-    def management_optimized(self,file_path):
+    def management_optimized(self, file_path):
         self.optimized_controller.optimized(file_path)
         user_input = int(input("\npress [1] to exit the program: "))
         if user_input == 1:
             return self.secondary_menu_choice_of_program()
         else:
             return self.main_menu()
+    
+    def management_file(self, file_path):
+        self.optimized_controller.optimized(file_path)
+        user_input = int(input("\npress [1] to exit the program: "))
+        if user_input == 1:
+            return self.main_menu()
+        else:
+            pass
+        
