@@ -39,7 +39,6 @@ class OptimizedController():
 
         action_instances_list = self.data_model.creating_a_list_of_stock_market_instances(file_path)
         total_action = len(action_instances_list)
-        print(total_action)
 
         matrix = [[0 for column  in range(capital_to_invest + 1)] for row in range(total_action + 1)]
 
@@ -56,8 +55,6 @@ class OptimizedController():
             for evolving_capital in range (1, capital_to_invest + 1):
                 if current_share.share_price <= evolving_capital:
                     matrix[nb_of_share][evolving_capital] = max(matrix[nb_of_share-1][evolving_capital], list_profit[nb_of_share-1] + matrix[nb_of_share-1][evolving_capital-share_price[nb_of_share-1]])
-                    # matrix[nb_of_share][evolving_capital] = max(matrix[nb_of_share-1][evolving_capital], list_profit[nb_of_share-1] + matrix[nb_of_share-1][evolving_capital-int(share_price[nb_of_share-1])])
-
                 else:
                     matrix[nb_of_share][evolving_capital] = matrix[nb_of_share-1][evolving_capital]
                
@@ -72,7 +69,9 @@ class OptimizedController():
         
         end_time = perf_counter()
         total_time = end_time - start_time
-        print(len(stock_selection))
 
-        self.optimized_view.display_resume_investment(matrix[-1][-1], stock_selection, total_time, file_path)
+        if file_path == "data\data.csv":
+            self.optimized_view.display_resume_investment_file_1(matrix[-1][-1], stock_selection, total_time)
+        else:
+            self.optimized_view.display_resume_investment_file_2_3(matrix[-1][-1], stock_selection, total_time)
 
